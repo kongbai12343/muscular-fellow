@@ -79,7 +79,17 @@ func Warnf(template string, args ...interface{}) {
 	logger.Warnf(template, args...)
 }
 
+func Fatalf(template string, args ...interface{}) {
+	if logger == nil {
+		return
+	}
+	logger.Fatalf(template, args...)
+}
+
 // 带键值对的输出日志
 func Infow(msg string, keysAndValues ...interface{}) {
+	if logger == nil {
+		return
+	}
 	logger.Infow(msg, keysAndValues...)
 }

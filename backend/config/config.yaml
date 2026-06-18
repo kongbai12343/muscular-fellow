@@ -1,0 +1,21 @@
+database:
+  host: localhost
+  port: 5432
+  user: postgres
+  password: kongbai12343
+  dbname: fitness
+  sslmode: disable
+  time_zone: Asia/Shanghai
+  max_open_conns: 10
+  max_idle_conns: 10
+
+server:
+  port: 8888
+  mode: debug
+
+logger:
+  level: debug
+
+jwt:
+  secret: 'kongbai12343'
+  expire: 24 # 小时
