@@ -53,6 +53,8 @@ func GetErrorMap(err error, obj interface{}) map[string]string {
 			errMap[field] = fmt.Sprintf("%s 邮箱格式不正确", field)
 		case "min":
 			errMap[field] = fmt.Sprintf("%s 长度不能小于 %s", field, fieldErr.Param())
+		case "max":
+			errMap[field] = fmt.Sprintf("%s 长度不能大于 %s", field, fieldErr.Param())
 		default:
 			errMap[field] = fmt.Sprintf("%s 不合法", field)
 		}

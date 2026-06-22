@@ -1,14 +1,14 @@
 package dto
 
 type UserLogin struct {
-	Email    string `json:"email" binding:"required,email"`
-	Password string `json:"password" binding:"required,min=8"`
+	Email    string `json:"email" binding:"required,email,max=100"`
+	Password string `json:"password" binding:"required,min=8,max=72"`
 }
 
 type UserRegister struct {
-	Username string `json:"username" binding:"required,min=2"`
-	Password string `json:"password" binding:"required,min=8"`
-	Email    string `json:"email" binding:"required,email"`
+	Username string `json:"username" binding:"required,min=2,max=100"`
+	Password string `json:"password" binding:"required,min=8,max=72"`
+	Email    string `json:"email" binding:"required,email,max=100"`
 }
 
 type User struct {
