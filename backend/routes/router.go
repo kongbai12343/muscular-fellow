@@ -23,13 +23,22 @@ func NewRouter() *gin.Engine {
 	// 初始化controller
 
 	userController := controllers.NewUserController()
+	exerciseController := controllers.NewExerciseController()
 
 	// 路由组
 	const prefix = "/api/v1"
 	api := r.Group(prefix)
 	{
+		// 公共接口
 		api.POST("/login", userController.Login)
 		api.POST("/register", userController.Register)
+
+		// 鉴权接口
+		auth := api.Group("").Use(middleware.AuthMiddleware())
+		{
+			auth.POST("/exercises", exerciseController.Create) // 创建动作
+			auth.GET("/exercises", exerciseController.GetExercises)
+		}
 	}
 
 	return r
