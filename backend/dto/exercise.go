@@ -17,7 +17,6 @@ type ExerciseResponse struct {
 }
 
 type ExerciseUpdateRequest struct {
-	ID          int64  `json:"id" binding:"required"`
 	Name        string `json:"name" binding:"required,min=1,max=50"`
 	MuscleGroup *int16 `json:"muscle_group" binding:"required,min=0,max=7"`
 	Category    *int16 `json:"category" binding:"required,min=0,max=4"`
@@ -29,6 +28,6 @@ type ExerciseDeleteRequest struct {
 }
 
 type ExerciseSearchRequest struct {
-	Name        string `json:"name" binding:"min=1,max=50"`
-	MuscleGroup *int16 `json:"muscle_group" binding:"min=0,max=7"`
+	Keyword     string `form:"keyword" binding:"omitempty,min=1,max=50"`
+	MuscleGroup *int16 `form:"muscle_group" binding:"omitempty,min=0,max=7"`
 }

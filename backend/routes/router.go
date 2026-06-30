@@ -36,8 +36,11 @@ func NewRouter() *gin.Engine {
 		// 鉴权接口
 		auth := api.Group("").Use(middleware.AuthMiddleware())
 		{
-			auth.POST("/exercises", exerciseController.Create) // 创建动作
-			auth.GET("/exercises", exerciseController.GetExercises)
+			auth.POST("/exercises", exerciseController.Create)               // 创建动作
+			auth.GET("/exercises", exerciseController.GetExercises)          // 获取所有动作
+			auth.GET("/exercises/:id", exerciseController.GetExercise)       // 获取动作详情
+			auth.PUT("/exercises/:id", exerciseController.UpdateExercise)    // 更新动作
+			auth.DELETE("/exercises/:id", exerciseController.DeleteExercise) // 删除动作
 		}
 	}
 
